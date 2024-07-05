@@ -1,5 +1,6 @@
 import { Container, Form } from "./styles";
 
+import { Filter } from "@components/Filter";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
@@ -24,6 +25,10 @@ export const Players = () => {
           icon="add" 
         />
       </Form>
+
+      <Filter 
+        title="Time A"
+      />
     </Container>
   );
 };
