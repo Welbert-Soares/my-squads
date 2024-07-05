@@ -17,13 +17,10 @@ export const NewGroup = () => {
   const navigation = useNavigation();
 
   const handleNew = async () => {
-
     try {
       if (group.trim().length) {
-        return Alert.alert("Novo Grupo", "Por favor, informe o nome do grupo.")
+        return Alert.alert("Novo Grupo", "Por favor, informe o nome do grupo.");
       }
-
-      
 
       await groupCreate(group);
       navigation.navigate("players", { group });
