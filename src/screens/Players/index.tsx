@@ -13,7 +13,7 @@ import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 
 export const Players = () => {
-  const [team, setTeam] = useState<string>();
+  const [team, setTeam] = useState<string>('Time A');
   const [players, setPlayers] = useState<string[]>([]);
 
   return (
