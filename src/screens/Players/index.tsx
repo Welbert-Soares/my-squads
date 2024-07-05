@@ -3,15 +3,16 @@ import { FlatList } from "react-native";
 
 import { Container, Form, HeaderList, NumbersOfPlayers } from "./styles";
 
+import { Input } from "@components/Input";
 import { Filter } from "@components/Filter";
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
-import { Input } from "@components/Input";
+import { PlayerCard } from "@components/PlayerCard";
 
 export const Players = () => {
   const [team, setTeam] = useState<string>();
-  const [players, setPlayers] = useState<string[]>([]);
+  const [players, setPlayers] = useState<string[]>(["Welbert"]);
 
   return (
     <Container>
@@ -45,6 +46,17 @@ export const Players = () => {
           {players.length}
         </NumbersOfPlayers>
       </HeaderList>
+
+      <FlatList 
+        data={players}
+        keyExtractor={item => item}
+        renderItem={({ item }) => (
+          <PlayerCard 
+            name={item}
+            onRemove={() => {}}
+          />
+        )}
+      />
     </Container>
   );
 };
