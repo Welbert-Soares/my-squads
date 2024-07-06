@@ -31,7 +31,7 @@ export function Groups() {
   };
 
   const handleOpenGroup = (group: string) => {
-    navigation.navigate("players", { group })
+    navigation.navigate("players", { group });
   }
 
   useFocusEffect(
@@ -62,7 +62,10 @@ export function Groups() {
         showsVerticalScrollIndicator={false}
       />
 
-      <Button title="Criar nova turma" onPress={handleNewGroup} />
+      <Button 
+        title="Criar nova turma" 
+        onPress={handleNewGroup} 
+      />
     </Container>
   );
 }

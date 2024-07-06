@@ -18,7 +18,7 @@ export const NewGroup = () => {
 
   const handleNew = async () => {
     try {
-      if (group.trim().length) {
+      if (group.trim().length === 0) {
         return Alert.alert("Novo Grupo", "Por favor, informe o nome do grupo.");
       }
 
