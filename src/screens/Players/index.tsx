@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useRoute } from "@react-navigation/native";
 import { Alert, FlatList, TextInput } from "react-native";
 
-import { playerAddByGroup } from "@storage/play/playerAddByGroup";
-import { PlayerStorageDTO } from "@storage/play/PlayerStorageDTO";
-import { playersGetByGroupAndTeam } from "@storage/play/playersGetByGroupAndTeam";
+import { playerAddByGroup } from "@storage/player/playerAddByGroup";
+import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
+import { playerRemoveByGroup } from "@storage/player/playerRemoveByGroup";
+import { playersGetByGroupAndTeam } from "@storage/player/playersGetByGroupAndTeam";
 
 import { AppError } from "@utils/AppError";
 
@@ -73,6 +74,17 @@ export const Players = () => {
     }
   }
 
+  const handlePlayerRemove = async (playerName: string) => {
+    try {
+      await playerRemoveByGroup(playerName, group);
+      featchPlayersByTeam();
+
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Remover Pessoa", "Não foi possível remover a pessoa.");
+    }
+  }
+
   useEffect(() => {
     featchPlayersByTeam()
   }, [team]);
@@ -129,7 +141,7 @@ export const Players = () => {
         renderItem={({ item }) => (
           <PlayerCard 
             name={item.name}
-            onRemove={() => {}}
+            onRemove={() => handlePlayerRemove(item.name)}
           />
         )}
         ListEmptyComponent={() => (
